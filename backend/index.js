@@ -11,6 +11,7 @@ let toggle = false;
 
 
 app.use(cors());
+
 app.get('/', (req, res) => {
     console.log(req.query);
     if (req.query.motion) motion = req.query.motion;
