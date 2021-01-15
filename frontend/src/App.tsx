@@ -17,7 +17,7 @@ function App() {
     }, []);
 
 
-    // Want to use async/await? Add the `async` keyword to your outer function/method.
+    /* Want to use async/await? Add the `async` keyword to your outer function/method.
     async function getData() {
         try {
             const response = await axios.get('http://localhost:5000/?motion');
@@ -26,6 +26,7 @@ function App() {
             console.error(error);
         }
     }
+     */
     
     console.log(motion);
     console.log(sound);
@@ -44,13 +45,15 @@ function App() {
                         <p className="font-bold font-xl pb-2">Sound</p>
                         <p>{sound ? sound : 'No sound detected'}</p>
                     </div>
-                    <div className="card">
-                        <p className="font-bold font-xl pb-2">Alarm</p>
-                        <p>{alarm ? 'Alarm is activated': 'Alarm is off'}</p>
-                    </div>
+                </div>
+
+                <div className="content-center justify-center">
+                    <button onClick={() => console.log("Clicked")} className={`${alarm ? 'bg-red-500' : 'bg-white'} rounded-full px-4 py-2 `}> {alarm ? 'Slå alarm fra' : 'Slå alarm til'} </button>
                 </div>
             </main>
+
         </div>
+
     );
 }
 
