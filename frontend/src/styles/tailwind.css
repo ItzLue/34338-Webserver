@@ -12,3 +12,7 @@
 /* Stop purging. */
 
 /* Your own custom utilities */
+
+.card {
+    @apply border border-2 border-gray-200 shadow-lg px-4 py-4 mx-4 my-4 bg-white min-w-min;
+}
