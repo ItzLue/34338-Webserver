@@ -14,7 +14,7 @@ function App() {
         axios.get("http://localhost:5000/?sound",).then(res => SetSound(res.data.sound));
         axios.get("http://localhost:5000/?alarm",).then(res => SetAlarm(res.data.alarm));
         axios.get("http://localhost:5000/?toggle",).then(res => SetToggle(res.data.toggle));
-    }, []);
+    });
 
 
     /* Want to use async/await? Add the `async` keyword to your outer function/method.
