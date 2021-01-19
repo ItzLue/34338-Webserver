@@ -1,33 +1,27 @@
 import React, {useEffect, useState} from 'react';
 import axios from 'axios';
 
-function App() {
+function App(this: any) {
     const [motion, SetMotion] = useState();
     const [sound, SetSound] = useState();
     const [alarm, SetAlarm] = useState();
     const [toggle, SetToggle] = useState();
 
-
-
     useEffect(() => {
-        axios.get("http://localhost:5000/?motion",).then(res => SetMotion(res.data.motion));
-        axios.get("http://localhost:5000/?sound",).then(res => SetSound(res.data.sound));
-        axios.get("http://localhost:5000/?alarm",).then(res => SetAlarm(res.data.alarm));
-        axios.get("http://localhost:5000/?toggle",).then(res => SetToggle(res.data.toggle));
-    });
+        setInterval(() => {
+            axios.get("http://localhost:5000/?motion",).then(res => SetMotion(res.data.motion));
+            axios.get("http://localhost:5000/?sound",).then(res => SetSound(res.data.sound));
+            axios.get("http://localhost:5000/?alarm",).then(res => SetAlarm(res.data.alarm));
+            axios.get("http://localhost:5000/?toggle",).then(res => SetToggle(res.data.toggle));
+        }, 1000)
+    }, []);
 
-
-    /* Want to use async/await? Add the `async` keyword to your outer function/method.
-    async function getData() {
-        try {
-            const response = await axios.get('http://localhost:5000/?motion');
-            console.log(response);
-        } catch (error) {
-            console.error(error);
-        }
+    const handleOnclick = () => {
+        axios.post("https://maker.ifttt.com/trigger/ESP/with/key/d36vpmTHuWQjEJOh50vmKA", {
+            value1: "13:13:13"
+        }).then(res => console.log(res)).catch(res => console.log(res));
     }
-     */
-    
+
     console.log(motion);
     console.log(sound);
     console.log(alarm);
@@ -48,12 +42,12 @@ function App() {
                 </div>
 
                 <div className="content-center justify-center">
-                    <button onClick={() => console.log("Clicked")} className={`${alarm ? 'bg-red-500' : 'bg-white'} rounded-full px-4 py-2 `}> {alarm ? 'Slå alarm fra' : 'Slå alarm til'} </button>
+                    <button onClick={() => handleOnclick()}
+                            className={`${alarm ? 'bg-red-500' : 'bg-white'} rounded-full px-4 py-2 `}> {alarm ? 'Slå alarm fra' : 'Slå alarm til'} </button>
                 </div>
             </main>
 
         </div>
-
     );
 }
 
