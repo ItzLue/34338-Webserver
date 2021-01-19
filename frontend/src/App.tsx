@@ -46,7 +46,6 @@ function App(this: any) {
                             className={`${alarm ? 'bg-red-500' : 'bg-white'} rounded-full px-4 py-2 `}> {alarm ? 'Slå alarm fra' : 'Slå alarm til'} </button>
                 </div>
             </main>
-
         </div>
     );
 }
