@@ -9,10 +9,10 @@ function App(this: any) {
 
     useEffect(() => {
         setInterval(() => {
-            axios.get("http://localhost:5000/?motion",).then(res => SetMotion(res.data.motion));
-            axios.get("http://localhost:5000/?sound",).then(res => SetSound(res.data.sound));
-            axios.get("http://localhost:5000/?alarm",).then(res => SetAlarm(res.data.alarm));
-            axios.get("http://localhost:5000/?toggle",).then(res => SetToggle(res.data.toggle));
+            axios.get("http://172.19.101.13:5000/?motion",).then(res => SetMotion(res.data.motion));
+            axios.get("http://172.19.101.13:5000/?sound",).then(res => SetSound(res.data.sound));
+            axios.get("http://172.19.101.13:5000/?alarm",).then(res => SetAlarm(res.data.alarm));
+            axios.get("http://172.19.101.13:5000/?toggle",).then(res => SetToggle(res.data.toggle));
         }, 1000)
     }, []);
 
@@ -41,12 +41,11 @@ function App(this: any) {
                     </div>
                 </div>
 
-                <div className="content-center justify-center">
+                <div className="flex container content-center justify-center mx-auto pt-4">
                     <button onClick={() => handleOnclick()}
                             className={`${alarm ? 'bg-red-500' : 'bg-white'} rounded-full px-4 py-2 `}> {alarm ? 'Slå alarm fra' : 'Slå alarm til'} </button>
                 </div>
             </main>
-
         </div>
     );
 }
