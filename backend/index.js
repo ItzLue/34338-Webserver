@@ -5,7 +5,7 @@ port = process.env.PORT || 5000;
 cors = require("cors");
 
 let motion = false;
-let sound = 0;
+let sound = false;
 let alarm = false;
 let toggle = false;
 
